@@ -1,0 +1,25 @@
+[import](common.lg)
+
+# SendActivity_FNKsPJ()
+[Activity
+    Text = ${SendActivity_FNKsPJ_text()}
+]
+
+# SendActivity_FNKsPJ_text()
+- buscando chiste
+# SendActivity_RVugbH()
+[Activity
+    Text = ${SendActivity_RVugbH_text()}
+]
+
+# SendActivity_RVugbH_text()
+- ```
+${dialog.response.setup}
+${dialog.response.delivery}```
+# SendActivity_50pxKL()
+[Activity
+    Text = ${SendActivity_50pxKL_text()}
+]
+
+# SendActivity_50pxKL_text()
+- Resibi un error : ${dialog.api_response.content.message}

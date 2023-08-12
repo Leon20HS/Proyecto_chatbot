@@ -1,0 +1,77 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "t2e6Nh",
+    "name": "GetChiste",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "udTutj"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "FNKsPJ"
+          },
+          "activity": "${SendActivity_FNKsPJ()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "8woL3z"
+          },
+          "resultProperty": "dialog.api_response",
+          "method": "GET",
+          "url": "https://v2.jokeapi.dev/joke/Programming?lang=es&type=twopart"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "ueV7bH"
+          },
+          "condition": "dialog.api_response.statusCode==200",
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "50pxKL"
+              },
+              "activity": "${SendActivity_50pxKL()}"
+            }
+          ],
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "RhsJOb"
+              },
+              "property": "dialog.response",
+              "value": "=dialog.api_response.content"
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "RVugbH"
+              },
+              "activity": "${SendActivity_RVugbH()}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "GetChiste.lg",
+  "recognizer": {
+    "$kind": "Microsoft.RegexRecognizer",
+    "intents": []
+  },
+  "id": "GetChiste"
+}
